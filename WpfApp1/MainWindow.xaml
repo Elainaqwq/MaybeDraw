@@ -20,7 +20,6 @@
                     <SolidColorBrush Color="Blue" />
                 </ComboBox.Items>
             </ComboBox>
-        </Canvas>
         <Button Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding ClearCommand}" />
     </Grid>
 </Window>
