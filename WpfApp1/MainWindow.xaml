@@ -1,0 +1,19 @@
+﻿<Window x:Class="MaybeDraw.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MaybeDraw" Height="600" Width="800">
+    <Grid>
+        <Canvas x:Name="DrawingCanvas" Background="White" MouseLeftButtonDown="DrawingCanvas_MouseLeftButtonDown"
+                MouseMove="DrawingCanvas_MouseMove" MouseLeftButtonUp="DrawingCanvas_MouseLeftButtonUp">
+            <!-- 直接绑定 Paths 到 ItemsSource，移除 DataTemplate -->
+            <ItemsControl ItemsSource="{Binding Paths}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Canvas>
+        <Button Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding ClearCommand}" />
+    </Grid>
+</Window>
