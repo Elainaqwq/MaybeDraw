@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 using MaybeDraw.ViewModel;
 
 namespace MaybeDraw
@@ -38,6 +39,21 @@ namespace MaybeDraw
             if (viewModel != null)
             {
                 viewModel.StartDrawingCommand.Execute(null);
+            }
+        }
+
+        // 颜色选择器改变时更新 ViewModel 中的 CurrentColor
+        private void ColorPicker_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var viewModel = DataContext as DrawViewModel;
+            if (viewModel != null && e.AddedItems.Count > 0)
+            {
+                var selectedBrush = e.AddedItems[0] as SolidColorBrush;
+                if (selectedBrush != null)
+                {
+                    // 更新 ViewModel 的 CurrentColor
+                    viewModel.CurrentColor = selectedBrush;
+                }
             }
         }
     }

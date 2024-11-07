@@ -20,7 +20,7 @@ namespace MaybeDraw.ViewModel
         public DrawViewModel()
         {
             _model = new DrawModel();
-            _currentColor = Brushes.Black;
+            _currentColor = _model.CurrentColor;
 
             _clearCommand = new RelayCommand(ClearCanvas);
             _startDrawingCommand = new RelayCommand(StartDrawing);
@@ -28,10 +28,20 @@ namespace MaybeDraw.ViewModel
         }
 
         public ObservableCollection<Path> Paths => _model.Paths;
+
+        //笔刷颜色
         public Brush CurrentColor
         {
             get => _currentColor;
-            set => SetProperty(ref _currentColor, value);
+            set
+            {
+                if (_currentColor != value)
+                {
+                    _currentColor = value;
+                    _model.CurrentColor = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public ICommand ClearCommand => _clearCommand;
