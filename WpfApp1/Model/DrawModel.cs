@@ -8,7 +8,7 @@ namespace MaybeDraw.Model
 {
     public class DrawModel
     {
-        // 存储绘制的路径未找到绑定"Paths"的DataContext
+        //线条
         public ObservableCollection<Path> Paths { get; set; } = new ObservableCollection<Path>();
         public List<Point> CurrentPath { get; set; } = new List<Point>();
         public void AddPath(List<Point> points, Brush color)
@@ -36,5 +36,6 @@ namespace MaybeDraw.Model
         {
             Paths.Clear();
         }
+        public Brush CurrentColor { get; set; } = Brushes.Black; // 保存当前颜色
     }
 }

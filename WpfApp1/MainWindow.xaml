@@ -5,7 +5,6 @@
     <Grid>
         <Canvas x:Name="DrawingCanvas" Background="White" MouseLeftButtonDown="DrawingCanvas_MouseLeftButtonDown"
                 MouseMove="DrawingCanvas_MouseMove" MouseLeftButtonUp="DrawingCanvas_MouseLeftButtonUp">
-            <!-- 直接绑定 Paths 到 ItemsSource，移除 DataTemplate -->
             <ItemsControl ItemsSource="{Binding Paths}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -13,6 +12,14 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+            <ComboBox SelectedItem="{Binding CurrentColor}">
+                <ComboBox.Items>
+                    <SolidColorBrush Color="Black" />
+                    <SolidColorBrush Color="Red" />
+                    <SolidColorBrush Color="Green" />
+                    <SolidColorBrush Color="Blue" />
+                </ComboBox.Items>
+            </ComboBox>
         </Canvas>
         <Button Content="Clear" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding ClearCommand}" />
     </Grid>
